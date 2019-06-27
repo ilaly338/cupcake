@@ -1,33 +1,160 @@
-.App {
-  text-align: center;
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0; 
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+input{
+  background: #DADDE2;
 }
 
-.App-header {
-  background-color: #282c34;
+body{
+  background: #DADDE2;
+}
+
+.header-link{
+  text-decoration: none;
+}
+
+.header-link:visited{
+  color: black;
+}
+
+.header-link:hover{
+  background: rgba(00, 00, 00, 0.2)
+
+}
+
+.container{
+  background: #B1BDC5;
+  margin: auto;
+  width: 100%;
+  max-width: 960px;
   min-height: 100vh;
+  border-left: 1px solid #889FA5;
+  border-right: 1px solid #889FA5;
+}
+
+.header-menu{
+  margin: auto;
+  padding: 20px 0 0 0;
+  width: 250px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-between;
+  font-size: 25px;
 }
 
-.App-link {
-  color: #61dafb;
+.product-wrapper{
+  display: flex;
+  flex-wrap: wrap;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.product-container{
+  width: 32%;
+}
+
+.product-container:nth-child(3n+2){
+  margin: 0 2%;
+}
+
+.product-img{
+  width: 100%;
+  cursor: pointer;
+}
+
+.product-info-wrapper{
+  position: relative;
+  top: -10%;
+  box-sizing: border-box;
+  padding: 0 16%;
+}
+
+.product-name{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cart-wrapper{
+  display: flex;
+}
+
+.cart{
+  padding: 0 5px;
+  cursor: pointer;
+}
+
+.cart:hover{
+  background: rgba(00, 00, 00, 0.2);
+}
+
+.qty-input{
+  width: 50px;
+}
+
+.modal{
+  cursor: pointer;
+  z-index: 5;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(00, 00, 00, 0.7)
+}
+
+
+.modal-content{
+  margin: auto;
+  width: 80%;
+  min-height: 100vh;
+  background: white;
+  display: flex;
+  justify-content: space-between;
+}
+
+.modal-img-wrapper{
+  width: 50%;
+}
+
+.modal-product-info-wrapper{
+  box-sizing: border-box;
+  width: 50%;
+  padding-top: 8%;
+  padding-right: 10%;
+  overflow: hidden;
+}
+
+.modal-product-desc,
+.modal-product-price{
+  margin-top: 15px;
+}
+
+.modal-url{
+  margin-top: 15px;
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cart-price{
+  margin-left: 6%;
+}
+
+@media screen and (max-width: 600px){
+  body{
+    border: none;
   }
-  to {
-    transform: rotate(360deg);
+  
+  .product-container{
+    width: 48%;
   }
+  
+  .product-container:nth-child(1n+1){
+    margin: 0;
+  }
+  .product-container:nth-child(2n+1){
+    margin-right: 4%;
+  }
+
 }
