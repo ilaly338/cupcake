@@ -33,8 +33,8 @@ class Product extends React.Component {
                     <div className='product-price'>{price}</div>
                     <div className='cart-wrapper'>
                         <InpCont onChanged = {this.onCountChanged} value={this.state.count} />
-                        <div className='cart' onClick = {this.cartAdd}>{this.props.cart && 'cart'}</div>
-                        <div className='cart'>{!this.props.cart && 'del'}</div>
+                        {this.props.cart && <div className='cart' onClick = {this.cartAdd}>cart</div>}
+                        {!this.props.cart && <div className='cart'>del</div>}
                     </div>
                 </div>
                 <div onClick = {() => this.setState({modal: false})}>
