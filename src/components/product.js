@@ -48,7 +48,7 @@ class Product extends React.Component {
     }
 
     render(){
-        const { item: { image, title, price } } = this.props;
+        const { item: { image, title, price, qty } } = this.props;
         return(
             <div className='product-container'>
                 <div className='img-wrapper' onClick = {() => this.setState({modal: true})}>
@@ -58,7 +58,8 @@ class Product extends React.Component {
                     <div className='product-name'>{title}</div>
                     <div className='product-price'>{price}</div>
                     <div className='cart-wrapper'>
-                        <InpCont onChanged = {this.onCountChanged} value={this.state.count} />
+                        {this.props.cart && <InpCont onChanged = {this.onCountChanged} value={this.state.count} />}
+                        {!this.props.cart && <div>qty - {qty}</div>}
                         {this.props.cart && <div className='cart' onClick = {this.cartAdd}>cart</div>}
                         {!this.props.cart && <div className='cart' onClick = {this.cartRemove}>del</div>}
                     </div>
