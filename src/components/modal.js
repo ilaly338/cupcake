@@ -13,8 +13,7 @@ class ModalPage extends React.Component {
                         <div className = 'modal-product-name'>{title}</div>
                         <div className = 'modal-product-desc'>{subtitle}</div>
                         <div className = 'modal-product-price'>{price}</div>
-                        
-                        <a href={url} target="_blank" className = 'modal-url'>{url}</a>
+                        <a href={url} target="_blank" rel="noopener noreferrer" className = 'modal-url'>{url}</a>
                     </div>
                 </div>
             </div>

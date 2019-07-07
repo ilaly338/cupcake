@@ -1,7 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import './App.css';
-import createBrauserHistory from 'history/createBrowserHistory';
 
 import MainPage from './components/mainpage'
 import CartPage from './components/cartpage'
@@ -12,7 +11,6 @@ let productsArr = JSON.parse(data);
 let booksArr = productsArr.books;
 let booksCart = [];
 
-const history = createBrauserHistory();
 
 class App extends React.Component {
   constructor(props){
@@ -28,14 +26,14 @@ stateUpd = () => {
 
   render() {
     return (
-      <Router history = {history}>
+      <Router>
         <div className='container'>
           <div className='header-menu'>
             <Link className='header-link' to="/">Home</Link>
             <Link className='header-link' to="/cart/">In Cart <CartQty length = {this.state.length} /></Link>
           </div>
           <Route path="/" exact component={() => <MainPage booksArr = {booksArr} booksCart = {booksCart} stateUpd = {this.stateUpd} />} />
-          <Route path="/cart/" component={() => <CartPage booksCart = {booksCart} />} />
+          <Route path="/cart/" component={() => <CartPage booksCart = {booksCart} stateUpd = {this.stateUpd}/>} />
         </div>
       </Router>
     );

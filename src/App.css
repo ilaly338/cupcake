@@ -89,7 +89,11 @@ body{
 }
 
 .qty-input{
-  width: 50px;
+  width: 40px;
+}
+
+.arrow{
+  cursor: pointer;
 }
 
 .modal{

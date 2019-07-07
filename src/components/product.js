@@ -16,8 +16,34 @@ class Product extends React.Component {
     }
 
     cartAdd = () => {
-        this.props.item.qty = this.state.count;
-        this.state.count !== 0 && this.props.booksCart.push(this.props.item);
+        if (this.state.count !==0) {
+            if (this.props.booksCart.length === 0) {
+                this.props.item.qty = this.state.count;
+                this.props.booksCart.push(this.props.item)
+            }
+            else {
+                let counter = 0;
+                for (const p of this.props.booksCart){
+                    if (p.isbn13 === this.props.item.isbn13){
+                        p.qty = p.qty + this.state.count;
+                        counter++;
+                    }
+                }
+                if (counter === 0){
+                    this.props.item.qty = this.state.count;
+                    this.props.booksCart.push(this.props.item)
+                }                
+            }
+        }
+        this.props.stateUpd();
+    }
+
+    cartRemove = () =>{
+        this.props.booksCart.map((p, index) => {
+            if (p.isbn13 === this.props.item.isbn13){
+                this.props.booksCart.splice(index, 1) 
+            }
+        })
         this.props.stateUpd();
     }
 
@@ -34,7 +60,7 @@ class Product extends React.Component {
                     <div className='cart-wrapper'>
                         <InpCont onChanged = {this.onCountChanged} value={this.state.count} />
                         {this.props.cart && <div className='cart' onClick = {this.cartAdd}>cart</div>}
-                        {!this.props.cart && <div className='cart'>del</div>}
+                        {!this.props.cart && <div className='cart' onClick = {this.cartRemove}>del</div>}
                     </div>
                 </div>
                 <div onClick = {() => this.setState({modal: false})}>
