@@ -14,7 +14,8 @@ class Product extends React.Component {
     onCountChanged = (count) => {
         this.setState({count});
     }
-
+    // Добавил логику добавления в корзину
+    // Проверка на повторяющиеся элементы и их последующее сложение!
     cartAdd = () => {
         if (this.state.count !==0) {
             if (this.props.booksCart.length === 0) {
@@ -58,6 +59,8 @@ class Product extends React.Component {
                     <div className='product-name'>{title}</div>
                     <div className='product-price'>{price}</div>
                     <div className='cart-wrapper'>
+                        {/* вынес логическое или за пределы div, что устранило отрисовку пустого объекта*/}
+                        {/* так же за счет ИЛИ определяется когда отрисовывать del/add и значение input */}
                         {this.props.cart && <InpCont onChanged = {this.onCountChanged} value={this.state.count} />}
                         {!this.props.cart && <div>qty - {qty}</div>}
                         {this.props.cart && <div className='cart' onClick = {this.cartAdd}>cart</div>}
